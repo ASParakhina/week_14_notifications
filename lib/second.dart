@@ -78,7 +78,7 @@ class _NotificationsPageState extends State<NotificationsPage> {
   Future<void> showEveryDay() async {
     final details = await _showNotification();
     tz.initializeTimeZones();
-
+    // var moscow = tz.getLocation('Russia/Moscow');
     await localNotifications.zonedSchedule(
         0, 'Name', 'body', _nextInstanceOfTenAM(), details,
         uiLocalNotificationDateInterpretation:
@@ -90,7 +90,7 @@ class _NotificationsPageState extends State<NotificationsPage> {
   tz.TZDateTime _nextInstanceOfTenAM() {
     final tz.TZDateTime now = tz.TZDateTime.now(tz.local);
     tz.TZDateTime scheduledDate =
-        tz.TZDateTime(tz.local, now.year, now.month, now.day, 21, 15);
+        tz.TZDateTime(tz.local, now.year, now.month, now.day, 8, 25);
     if (scheduledDate.isBefore(now)) {
       scheduledDate = scheduledDate.add(const Duration(days: 1));
     }
