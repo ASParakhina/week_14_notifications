@@ -67,6 +67,7 @@ class _NotificationsPageState extends State<NotificationsPage> {
   }
 
   Future<NotificationDetails> _showNotification() async {
+    tz.initializeTimeZones();
     const androidDetails = AndroidNotificationDetails("ID", "Name notification",
         importance: Importance.high,
         channelDescription: "content notifocation");
@@ -77,7 +78,7 @@ class _NotificationsPageState extends State<NotificationsPage> {
 
   Future<void> showEveryDay() async {
     final details = await _showNotification();
-    tz.initializeTimeZones();
+
     // var moscow = tz.getLocation('Russia/Moscow');
     await localNotifications.zonedSchedule(
         0, 'Name', 'body', _nextInstanceOfTenAM(), details,
